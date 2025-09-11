@@ -15,6 +15,10 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        luxury: "bg-gradient-luxury text-white shadow-luxury hover:shadow-gold transition-all duration-300 relative overflow-hidden group",
+        gold: "bg-gradient-gold text-primary shadow-gold hover:shadow-luxury transition-all duration-300",
+        coffee: "bg-coffee text-coffee-foreground hover:bg-coffee/90 shadow-lg",
+        metallic: "bg-gradient-metallic text-metallic-foreground hover:bg-metallic/90 shadow-lg",
       },
       size: {
         default: "h-10 px-4 py-2",
