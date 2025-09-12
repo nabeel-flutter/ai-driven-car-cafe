@@ -8,59 +8,63 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Car Café Premium Design System */
-    --background: 0 0% 98%;
-    --foreground: 0 0% 8%;
+    /* Modern Car Café Design System */
+    --background: 0 0% 99%;
+    --foreground: 0 0% 5%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 8%;
+    --card-foreground: 0 0% 5%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 8%;
+    --popover-foreground: 0 0% 5%;
 
-    /* Premium Black & Gold Theme */
-    --primary: 0 0% 8%;
+    /* Modern Dark Theme with Vibrant Accents */
+    --primary: 0 0% 3%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 0 0% 20%;
+    --secondary: 0 0% 12%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 0 0% 94%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 45 100% 70%;
-    --accent-foreground: 0 0% 8%;
+    /* Modern Gold with Orange Undertones */
+    --accent: 35 100% 65%;
+    --accent-foreground: 0 0% 5%;
 
-    /* Coffee Brown Accent */
-    --coffee: 25 60% 25%;
+    /* Rich Coffee Brown */
+    --coffee: 20 45% 25%;
     --coffee-foreground: 0 0% 98%;
 
-    /* Metallic Grey */
-    --metallic: 0 0% 35%;
+    /* Modern Metallic Silver */
+    --metallic: 0 0% 25%;
     --metallic-foreground: 0 0% 98%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 90%;
+    --border: 0 0% 92%;
     --input: 0 0% 96%;
-    --ring: 45 100% 70%;
+    --ring: 35 100% 65%;
 
-    /* Premium Gradients */
-    --gradient-luxury: linear-gradient(135deg, hsl(0 0% 8%), hsl(0 0% 20%));
-    --gradient-gold: linear-gradient(135deg, hsl(45 100% 70%), hsl(45 100% 80%));
-    --gradient-metallic: linear-gradient(135deg, hsl(0 0% 30%), hsl(0 0% 50%));
-    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.1), hsl(0 0% 100% / 0.05));
-    --gradient-hero-overlay: linear-gradient(135deg, hsl(0 0% 0% / 0.8), hsl(0 0% 0% / 0.4));
+    /* Modern Gradients */
+    --gradient-modern: linear-gradient(135deg, hsl(0 0% 3%) 0%, hsl(0 0% 8%) 50%, hsl(0 0% 15%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(35 100% 65%) 0%, hsl(45 100% 70%) 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+    --gradient-coffee: linear-gradient(135deg, hsl(20 45% 25%) 0%, hsl(25 50% 30%) 100%);
     
-    /* Shadows & Effects */
-    --shadow-luxury: 0 25px 50px -12px hsl(0 0% 0% / 0.25);
-    --shadow-gold: 0 10px 30px -10px hsl(45 100% 70% / 0.3);
-    --shadow-glass: 0 8px 32px 0 hsl(0 0% 0% / 0.37);
-    --glow-accent: 0 0 40px hsl(45 100% 70% / 0.2);
-    --glow-hover: 0 0 60px hsl(45 100% 70% / 0.4);
+    /* Modern Shadows & Effects */
+    --shadow-modern: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    --shadow-accent: 0 10px 40px -10px hsla(35, 100%, 65%, 0.25);
+    --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --glow-modern: 0 0 60px hsla(35, 100%, 65%, 0.15);
+    --blur-glass: blur(16px);
 
-    --radius: 0.75rem;
+    /* Glass Morphism */
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.12);
+
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 

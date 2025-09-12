@@ -1,112 +1,103 @@
 import { Button } from "@/components/ui/button";
-import { Calendar, Coffee, ShoppingBag, Star, Sparkles } from "lucide-react";
+import { Calendar, Coffee, ShoppingBag } from "lucide-react";
 import heroImage from "@/assets/hero-car-cafe.jpg";
-import { useEffect, useState } from "react";
 
 const Hero = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
+      {/* Animated Background */}
       <div className="absolute inset-0">
         <img 
           src={heroImage} 
           alt="Luxury car café with premium detailing and coffee service"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover scale-105 animate-fade-in"
         />
-        <div className="absolute inset-0 bg-gradient-hero-overlay backdrop-blur-[1px]" />
-        {/* Animated particles */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(6)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-accent/30 rounded-full animate-float"
-              style={{
-                left: `${10 + i * 15}%`,
-                top: `${20 + i * 10}%`,
-                animationDelay: `${i * 0.5}s`,
-                animationDuration: `${3 + i * 0.5}s`,
-              }}
-            />
-          ))}
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+        {/* Modern overlay with subtle pattern */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60" />
       </div>
+
+      {/* Floating Elements */}
+      <div className="absolute top-1/4 left-10 w-2 h-2 bg-accent/60 rounded-full animate-pulse-glow hidden lg:block" />
+      <div className="absolute top-1/3 right-20 w-3 h-3 bg-accent/40 rounded-full animate-float hidden lg:block" />
+      <div className="absolute bottom-1/3 left-1/4 w-1 h-1 bg-accent/80 rounded-full animate-pulse hidden lg:block" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
-        <div className="max-w-4xl mx-auto">
-          {/* Badge */}
-          <div className={`inline-flex items-center gap-2 bg-gradient-gold text-primary px-6 py-3 rounded-full text-sm font-semibold mb-8 shadow-gold transition-all duration-700 hover:shadow-glow-hover ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`}>
-            <Star className="h-4 w-4 animate-pulse-glow" />
-            Rated #1 Car Care Experience
-            <Sparkles className="h-4 w-4 animate-pulse" />
+        <div className="max-w-5xl mx-auto">
+          {/* Modern Badge */}
+          <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-glass border border-white/20 text-white px-8 py-4 rounded-2xl text-sm font-medium mb-12 animate-slide-up shadow-glass">
+            <div className="w-3 h-3 bg-gradient-accent rounded-full animate-pulse-glow" />
+            🏆 Rated #1 Car Care Experience
+            <div className="w-3 h-3 bg-gradient-accent rounded-full animate-pulse-glow" />
           </div>
 
-          {/* Main Headline */}
-          <h1 className={`text-5xl md:text-7xl font-bold mb-6 leading-tight transition-all duration-700 delay-200 ${isVisible ? 'animate-fadeInUp' : 'opacity-0 translate-y-8'}`}>
-            Where Luxury Meets
-            <span className="bg-gradient-to-r from-accent to-accent/80 bg-clip-text text-transparent animate-pulse-glow"> 
-              {" "}Lifestyle
+          {/* Modern Headline */}
+          <h1 className="text-6xl md:text-8xl font-black mb-8 leading-tight animate-fade-in-up">
+            Where Luxury
+            <br />
+            <span className="bg-gradient-accent bg-clip-text text-transparent relative">
+              Meets Lifestyle
+              <div className="absolute inset-0 bg-gradient-accent bg-clip-text text-transparent opacity-50 blur-sm -z-10" />
             </span>
           </h1>
 
-          {/* Subtitle */}
-          <p className={`text-xl md:text-2xl mb-8 text-gray-300 max-w-2xl mx-auto transition-all duration-700 delay-400 ${isVisible ? 'animate-fadeInUp' : 'opacity-0 translate-y-8'}`}>
-            Premium car detailing, artisan coffee, and exclusive merchandise in one stunning location
+          {/* Modern Subtitle */}
+          <p className="text-xl md:text-2xl mb-12 text-gray-200 max-w-3xl mx-auto leading-relaxed animate-fade-in font-light">
+            Premium car detailing, artisan coffee, and exclusive merchandise in one stunning location. 
+            <span className="text-accent font-medium">Experience the future of automotive luxury.</span>
           </p>
 
           {/* Service Highlights */}
-          <div className={`flex flex-wrap justify-center gap-6 mb-12 text-sm md:text-base transition-all duration-700 delay-600 ${isVisible ? 'animate-fadeInUp' : 'opacity-0 translate-y-8'}`}>
-            <div className="flex items-center gap-2 bg-gradient-glass backdrop-blur-sm px-4 py-2 rounded-full border border-white/10 hover:shadow-glow transition-all duration-300 hover:scale-105">
-              <Calendar className="h-5 w-5 text-accent animate-pulse" />
-              <span>Premium Wash</span>
+          <div className="flex flex-wrap justify-center gap-8 mb-16 animate-fade-in">
+            <div className="flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 px-6 py-3 rounded-full">
+              <Calendar className="h-5 w-5 text-accent" />
+              <span className="font-medium">Premium Wash</span>
             </div>
-            <div className="flex items-center gap-2 bg-gradient-glass backdrop-blur-sm px-4 py-2 rounded-full border border-white/10 hover:shadow-glow transition-all duration-300 hover:scale-105">
-              <Coffee className="h-5 w-5 text-accent animate-pulse" />
-              <span>Artisan Café</span>
+            <div className="flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 px-6 py-3 rounded-full">
+              <Coffee className="h-5 w-5 text-accent" />
+              <span className="font-medium">Artisan Café</span>
             </div>
-            <div className="flex items-center gap-2 bg-gradient-glass backdrop-blur-sm px-4 py-2 rounded-full border border-white/10 hover:shadow-glow transition-all duration-300 hover:scale-105">
-              <ShoppingBag className="h-5 w-5 text-accent animate-pulse" />
-              <span>Exclusive Store</span>
+            <div className="flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 px-6 py-3 rounded-full">
+              <ShoppingBag className="h-5 w-5 text-accent" />
+              <span className="font-medium">Exclusive Store</span>
             </div>
           </div>
 
-          {/* CTA Buttons */}
-          <div className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-700 delay-800 ${isVisible ? 'animate-fadeInUp' : 'opacity-0 translate-y-8'}`}>
-            <Button variant="gold" size="lg" className="text-lg px-8 py-6 hover:scale-105 transition-all duration-300 animate-pulse-glow">
+          {/* Modern CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center animate-slide-up">
+            <Button variant="gold" size="lg" className="text-lg px-10 py-7 rounded-2xl font-semibold">
               Book Car Wash
+              <div className="absolute inset-0 bg-gradient-accent opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-2xl" />
             </Button>
-            <Button variant="luxury" size="lg" className="text-lg px-8 py-6 hover:scale-105 transition-all duration-300 group">
-              <Coffee className="h-5 w-5 mr-2 group-hover:animate-bounce" />
+            <Button variant="glass" size="lg" className="text-lg px-10 py-7 rounded-2xl font-semibold group">
+              <Coffee className="h-5 w-5 mr-3" />
               Order Coffee
             </Button>
-            <Button variant="metallic" size="lg" className="text-lg px-8 py-6 hover:scale-105 transition-all duration-300 group">
-              <ShoppingBag className="h-5 w-5 mr-2 group-hover:animate-bounce" />
+            <Button variant="metallic" size="lg" className="text-lg px-10 py-7 rounded-2xl font-semibold">
+              <ShoppingBag className="h-5 w-5 mr-3" />
               Shop Now
             </Button>
           </div>
         </div>
       </div>
 
-      {/* Stats Section */}
-      <div className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 w-full max-w-4xl px-4 transition-all duration-700 delay-1000 ${isVisible ? 'animate-fadeInUp' : 'opacity-0 translate-y-8'}`}>
-        <div className="grid grid-cols-3 gap-8 text-center text-white bg-gradient-glass backdrop-blur-md rounded-2xl p-6 border border-white/10 shadow-glass">
-          <div className="group hover:scale-110 transition-transform duration-300">
-            <div className="text-3xl md:text-4xl font-bold text-accent mb-2 animate-pulse-glow">5000+</div>
-            <div className="text-sm text-gray-300 group-hover:text-white transition-colors duration-300">Happy Customers</div>
-          </div>
-          <div className="group hover:scale-110 transition-transform duration-300">
-            <div className="text-3xl md:text-4xl font-bold text-accent mb-2 animate-pulse-glow">50+</div>
-            <div className="text-sm text-gray-300 group-hover:text-white transition-colors duration-300">Premium Services</div>
-          </div>
-          <div className="group hover:scale-110 transition-transform duration-300">
-            <div className="text-3xl md:text-4xl font-bold text-accent mb-2 animate-pulse-glow">99.9%</div>
-            <div className="text-sm text-gray-300 group-hover:text-white transition-colors duration-300">Satisfaction Rate</div>
+      {/* Modern Stats Section */}
+      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 w-full max-w-5xl px-4">
+        <div className="bg-white/5 backdrop-blur-glass border border-white/10 rounded-3xl p-8 shadow-glass">
+          <div className="grid grid-cols-3 gap-8 text-center text-white">
+            <div className="group">
+              <div className="text-4xl md:text-5xl font-black text-accent mb-3 group-hover:scale-110 transition-transform duration-300">5000+</div>
+              <div className="text-sm text-gray-300 font-medium">Happy Customers</div>
+            </div>
+            <div className="group">
+              <div className="text-4xl md:text-5xl font-black text-accent mb-3 group-hover:scale-110 transition-transform duration-300">50+</div>
+              <div className="text-sm text-gray-300 font-medium">Premium Services</div>
+            </div>
+            <div className="group">
+              <div className="text-4xl md:text-5xl font-black text-accent mb-3 group-hover:scale-110 transition-transform duration-300">99.9%</div>
+              <div className="text-sm text-gray-300 font-medium">Satisfaction Rate</div>
+            </div>
           </div>
         </div>
       </div>
