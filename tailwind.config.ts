@@ -78,11 +78,15 @@ export default {
         'gradient-luxury': 'var(--gradient-luxury)',
         'gradient-gold': 'var(--gradient-gold)',
         'gradient-metallic': 'var(--gradient-metallic)',
+        'gradient-glass': 'var(--gradient-glass)',
+        'gradient-hero-overlay': 'var(--gradient-hero-overlay)',
       },
       boxShadow: {
         'luxury': 'var(--shadow-luxury)',
         'gold': 'var(--shadow-gold)',
+        'glass': 'var(--shadow-glass)',
         'glow': 'var(--glow-accent)',
+        'glow-hover': 'var(--glow-hover)',
       },
       keyframes: {
         "accordion-down": {
@@ -109,12 +113,42 @@ export default {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-10px)" },
         },
+        "fadeInUp": {
+          "0%": { opacity: "0", transform: "translateY(30px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "fadeInLeft": {
+          "0%": { opacity: "0", transform: "translateX(-30px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        "fadeInRight": {
+          "0%": { opacity: "0", transform: "translateX(30px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        "scaleIn": {
+          "0%": { opacity: "0", transform: "scale(0.9)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
+        "pulse-glow": {
+          "0%, 100%": { boxShadow: "var(--glow-accent)" },
+          "50%": { boxShadow: "var(--glow-hover)" },
+        },
+        "rotate-slow": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "shine": "shine 2s ease-in-out infinite",
         "float": "float 3s ease-in-out infinite",
+        "fadeInUp": "fadeInUp 0.6s ease-out",
+        "fadeInLeft": "fadeInLeft 0.6s ease-out",
+        "fadeInRight": "fadeInRight 0.6s ease-out",
+        "scaleIn": "scaleIn 0.4s ease-out",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+        "rotate-slow": "rotate-slow 20s linear infinite",
       },
     },
   },
