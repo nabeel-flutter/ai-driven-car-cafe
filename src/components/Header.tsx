@@ -19,25 +19,27 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#services" className="text-sm font-medium hover:text-accent transition-colors">
+            <a href="/services" className="text-sm font-medium hover:text-accent transition-colors">
               Services
             </a>
-            <a href="#about" className="text-sm font-medium hover:text-accent transition-colors">
+            <a href="/about" className="text-sm font-medium hover:text-accent transition-colors">
               About
             </a>
-            <a href="#gallery" className="text-sm font-medium hover:text-accent transition-colors">
+            <a href="/gallery" className="text-sm font-medium hover:text-accent transition-colors">
               Gallery
             </a>
-            <a href="#contact" className="text-sm font-medium hover:text-accent transition-colors">
+            <a href="/contact" className="text-sm font-medium hover:text-accent transition-colors">
               Contact
             </a>
           </nav>
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="ghost" size="sm">
-              <Calendar className="h-4 w-4 mr-2" />
-              Book Wash
+            <Button variant="ghost" size="sm" asChild>
+              <a href="/booking">
+                <Calendar className="h-4 w-4 mr-2" />
+                Book Wash
+              </a>
             </Button>
             <Button variant="coffee" size="sm">
               <Coffee className="h-4 w-4 mr-2" />
@@ -64,22 +66,24 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border/50">
             <nav className="flex flex-col gap-4">
-              <a href="#services" className="text-sm font-medium hover:text-accent transition-colors">
+              <a href="/services" className="text-sm font-medium hover:text-accent transition-colors">
                 Services
               </a>
-              <a href="#about" className="text-sm font-medium hover:text-accent transition-colors">
+              <a href="/about" className="text-sm font-medium hover:text-accent transition-colors">
                 About
               </a>
-              <a href="#gallery" className="text-sm font-medium hover:text-accent transition-colors">
+              <a href="/gallery" className="text-sm font-medium hover:text-accent transition-colors">
                 Gallery
               </a>
-              <a href="#contact" className="text-sm font-medium hover:text-accent transition-colors">
+              <a href="/contact" className="text-sm font-medium hover:text-accent transition-colors">
                 Contact
               </a>
               <div className="flex flex-col gap-2 mt-4">
-                <Button variant="ghost" size="sm" className="justify-start">
-                  <Calendar className="h-4 w-4 mr-2" />
-                  Book Wash
+                <Button variant="ghost" size="sm" className="justify-start" asChild>
+                  <a href="/booking">
+                    <Calendar className="h-4 w-4 mr-2" />
+                    Book Wash
+                  </a>
                 </Button>
                 <Button variant="coffee" size="sm" className="justify-start">
                   <Coffee className="h-4 w-4 mr-2" />

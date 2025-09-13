@@ -27,11 +27,11 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Quick Links</h3>
             <div className="space-y-2 text-sm">
-              <a href="#services" className="block hover:text-accent transition-colors">Services</a>
-              <a href="#about" className="block hover:text-accent transition-colors">About Us</a>
-              <a href="#gallery" className="block hover:text-accent transition-colors">Gallery</a>
-              <a href="#contact" className="block hover:text-accent transition-colors">Contact</a>
-              <a href="#booking" className="block hover:text-accent transition-colors">Book Online</a>
+              <a href="/services" className="block hover:text-accent transition-colors">Services</a>
+              <a href="/about" className="block hover:text-accent transition-colors">About Us</a>
+              <a href="/gallery" className="block hover:text-accent transition-colors">Gallery</a>
+              <a href="/contact" className="block hover:text-accent transition-colors">Contact</a>
+              <a href="/booking" className="block hover:text-accent transition-colors">Book Online</a>
             </div>
           </div>
 
@@ -76,9 +76,9 @@ const Footer = () => {
             © 2024 Car Café. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-accent transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-accent transition-colors">Cookie Policy</a>
+            <a href="/privacy" className="hover:text-accent transition-colors">Privacy Policy</a>
+            <a href="/terms" className="hover:text-accent transition-colors">Terms of Service</a>
+            <a href="/cookies" className="hover:text-accent transition-colors">Cookie Policy</a>
           </div>
         </div>
       </div>
