@@ -40,7 +40,7 @@ const Services = () => {
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Three Experiences,
             <span className="bg-gradient-to-r from-accent to-accent/80 bg-clip-text text-transparent">
@@ -57,7 +57,11 @@ const Services = () => {
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
-              <Card key={index} className="group hover:shadow-luxury transition-all duration-300 overflow-hidden border-0 bg-card/50 backdrop-blur-sm">
+              <Card 
+                key={index} 
+                className="group hover:shadow-luxury transition-all duration-300 overflow-hidden border-0 bg-card/50 backdrop-blur-sm animate-scale-in hover:scale-105"
+                style={{ animationDelay: `${index * 0.2}s` }}
+              >
                 {/* Service Image */}
                 <div className="relative h-64 overflow-hidden">
                   <img 
