@@ -22,6 +22,13 @@ const AdminDashboard: React.FC = () => {
 
   const adminCards = [
     {
+      title: "Booking Management",
+      description: "Manage all bookings and appointments",
+      icon: Calendar,
+      href: "/admin/bookings",
+      show: true // All admins can see bookings
+    },
+    {
       title: "Car Wash Management",
       description: "Manage bookings, packages, and time slots",
       icon: Car,

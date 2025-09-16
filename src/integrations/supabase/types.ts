@@ -14,6 +14,66 @@ export type Database = {
   }
   public: {
     Tables: {
+      bookings: {
+        Row: {
+          booking_reference: string
+          created_at: string | null
+          email: string
+          first_name: string
+          id: string
+          last_name: string
+          payment_status: string | null
+          phone: string
+          preferred_date: string
+          preferred_time: string
+          service_name: string
+          service_price: number
+          service_type: string
+          status: string | null
+          updated_at: string | null
+          user_id: string | null
+          vehicle_details: string | null
+        }
+        Insert: {
+          booking_reference?: string
+          created_at?: string | null
+          email: string
+          first_name: string
+          id?: string
+          last_name: string
+          payment_status?: string | null
+          phone: string
+          preferred_date: string
+          preferred_time: string
+          service_name: string
+          service_price: number
+          service_type: string
+          status?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+          vehicle_details?: string | null
+        }
+        Update: {
+          booking_reference?: string
+          created_at?: string | null
+          email?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          payment_status?: string | null
+          phone?: string
+          preferred_date?: string
+          preferred_time?: string
+          service_name?: string
+          service_price?: number
+          service_type?: string
+          status?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+          vehicle_details?: string | null
+        }
+        Relationships: []
+      }
       cafe_categories: {
         Row: {
           created_at: string | null

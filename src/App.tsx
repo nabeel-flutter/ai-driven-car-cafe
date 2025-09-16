@@ -19,6 +19,7 @@ import AdminDashboard from "./pages/admin/Dashboard";
 import CarWashAdmin from "./pages/admin/CarWashAdmin";
 import CafeAdmin from "./pages/admin/CafeAdmin";
 import StoreAdmin from "./pages/admin/StoreAdmin";
+import BookingAdmin from "./pages/admin/BookingAdmin";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { HelmetProvider } from "react-helmet-async";
 
@@ -53,6 +54,11 @@ const App: React.FC = () => {
           <Route path="/admin" element={
             <ProtectedRoute requireAdmin={true}>
               <AdminDashboard />
+            </ProtectedRoute>
+          } />
+          <Route path="/admin/bookings" element={
+            <ProtectedRoute requireAdmin={true}>
+              <BookingAdmin />
             </ProtectedRoute>
           } />
           <Route path="/admin/car-wash" element={

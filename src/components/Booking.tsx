@@ -6,15 +6,27 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Calendar, Clock, Car, Coffee, ShoppingBag } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const Booking = () => {
   const [selectedService, setSelectedService] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [preferredDate, setPreferredDate] = useState("");
+  const [preferredTime, setPreferredTime] = useState("");
+  const [vehicleDetails, setVehicleDetails] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
   
   const services = [
     {
       id: "express-wash",
       name: "Express Wash",
-      price: "$25",
+      price: 25,
+      priceDisplay: "$25",
       duration: "30 min",
       icon: Car,
       description: "Quick exterior wash and dry"
@@ -22,7 +34,8 @@ const Booking = () => {
     {
       id: "premium-detail",
       name: "Premium Detail",
-      price: "$85",
+      price: 85,
+      priceDisplay: "$85",
       duration: "2 hours",
       icon: Car,
       description: "Complete interior and exterior detailing"
@@ -30,7 +43,8 @@ const Booking = () => {
     {
       id: "cafe-experience",
       name: "Café Experience",
-      price: "$15",
+      price: 15,
+      priceDisplay: "$15",
       duration: "45 min",
       icon: Coffee,
       description: "Premium coffee and pastries"
@@ -38,12 +52,96 @@ const Booking = () => {
     {
       id: "combo-package",
       name: "Ultimate Combo",
-      price: "$120",
+      price: 120,
+      priceDisplay: "$120",
       duration: "3 hours",
       icon: ShoppingBag,
       description: "Car detail + café experience + merchandise discount"
     }
   ];
+
+  const handleBooking = async () => {
+    if (!selectedService || !firstName || !lastName || !email || !phone || !preferredDate || !preferredTime) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all required fields.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      const selectedServiceData = services.find(s => s.id === selectedService);
+      if (!selectedServiceData) return;
+
+      // Create booking in database
+      const { data: booking, error: bookingError } = await supabase
+        .from('bookings')
+        .insert({
+          service_type: selectedService,
+          service_name: selectedServiceData.name,
+          service_price: selectedServiceData.price,
+          first_name: firstName,
+          last_name: lastName,
+          email,
+          phone,
+          preferred_date: preferredDate,
+          preferred_time: preferredTime,
+          vehicle_details: vehicleDetails || null,
+        })
+        .select()
+        .single();
+
+      if (bookingError) throw bookingError;
+
+      // Send confirmation email
+      const { error: emailError } = await supabase.functions.invoke('send-booking-confirmation', {
+        body: {
+          firstName,
+          lastName,
+          email,
+          serviceName: selectedServiceData.name,
+          servicePrice: selectedServiceData.priceDisplay,
+          preferredDate,
+          preferredTime,
+          bookingReference: booking.booking_reference,
+          vehicleDetails,
+        },
+      });
+
+      if (emailError) {
+        console.error("Email error:", emailError);
+        // Don't throw error for email - booking was successful
+      }
+
+      toast({
+        title: "Booking Confirmed!",
+        description: `Your booking reference is ${booking.booking_reference}. Check your email for confirmation details.`,
+      });
+
+      // Reset form
+      setSelectedService("");
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPhone("");
+      setPreferredDate("");
+      setPreferredTime("");
+      setVehicleDetails("");
+
+    } catch (error: any) {
+      console.error("Booking error:", error);
+      toast({
+        title: "Booking Failed",
+        description: error.message || "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section className="py-20 bg-background">
@@ -85,7 +183,7 @@ const Booking = () => {
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-1">
                           <CardTitle className="text-lg">{service.name}</CardTitle>
-                          <span className="text-2xl font-bold text-accent">{service.price}</span>
+                          <span className="text-2xl font-bold text-accent">{service.priceDisplay}</span>
                         </div>
                         <CardDescription>{service.description}</CardDescription>
                         <div className="flex items-center gap-2 mt-2 text-sm text-muted-foreground">
@@ -115,32 +213,65 @@ const Booking = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="first-name">First Name</Label>
-                  <Input id="first-name" placeholder="John" />
+                  <Input 
+                    id="first-name" 
+                    placeholder="John" 
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    required
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="last-name">Last Name</Label>
-                  <Input id="last-name" placeholder="Doe" />
+                  <Input 
+                    id="last-name" 
+                    placeholder="Doe" 
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    required
+                  />
                 </div>
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="john@example.com" />
+                <Input 
+                  id="email" 
+                  type="email" 
+                  placeholder="john@example.com" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="phone">Phone Number</Label>
-                <Input id="phone" type="tel" placeholder="+1 (555) 123-4567" />
+                <Input 
+                  id="phone" 
+                  type="tel" 
+                  placeholder="+1 (555) 123-4567" 
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  required
+                />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="date">Preferred Date</Label>
-                  <Input id="date" type="date" />
+                  <Input 
+                    id="date" 
+                    type="date" 
+                    value={preferredDate}
+                    onChange={(e) => setPreferredDate(e.target.value)}
+                    min={new Date().toISOString().split('T')[0]}
+                    required
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="time">Preferred Time</Label>
-                  <Select>
+                  <Select value={preferredTime} onValueChange={setPreferredTime}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select time" />
                     </SelectTrigger>
@@ -162,6 +293,8 @@ const Booking = () => {
                   id="car-details"
                   placeholder="Make, model, year, special requests..."
                   className="min-h-[80px]"
+                  value={vehicleDetails}
+                  onChange={(e) => setVehicleDetails(e.target.value)}
                 />
               </div>
 
@@ -169,9 +302,10 @@ const Booking = () => {
                 variant="luxury" 
                 size="lg" 
                 className="w-full"
-                disabled={!selectedService}
+                disabled={!selectedService || isSubmitting}
+                onClick={handleBooking}
               >
-                Book Now - {services.find(s => s.id === selectedService)?.price || "$0"}
+                {isSubmitting ? "Booking..." : `Book Now - ${services.find(s => s.id === selectedService)?.priceDisplay || "$0"}`}
               </Button>
 
               <p className="text-sm text-muted-foreground text-center">
