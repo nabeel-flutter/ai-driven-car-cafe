@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, Coffee, ShoppingBag, Star, Zap, Shield } from "lucide-react";
-import carDetailingImage from "@/assets/car-detailing.jpg";
-import cafeServiceImage from "@/assets/cafe-service.jpg";
-import merchandiseStoreImage from "@/assets/merchandise-store.jpg";
+import carDetailingImage from "@/assets/car-detailing-clean.jpg";
+import cafeServiceImage from "@/assets/cafe-service-clean.jpg";
+import merchandiseStoreImage from "@/assets/merchandise-store-clean.jpg";
 
 const Services = () => {
   const services = [

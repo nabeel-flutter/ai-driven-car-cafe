@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import carDetailingImage from "@/assets/car-detailing.jpg";
-import cafeServiceImage from "@/assets/cafe-service.jpg";
-import merchandiseStoreImage from "@/assets/merchandise-store.jpg";
-import heroImage from "@/assets/hero-car-cafe.jpg";
+import carDetailingImage from "@/assets/car-detailing-clean.jpg";
+import cafeServiceImage from "@/assets/cafe-service-clean.jpg";
+import merchandiseStoreImage from "@/assets/merchandise-store-clean.jpg";
+import heroImage from "@/assets/hero-car-cafe-clean.jpg";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
